@@ -17,6 +17,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var repeatProtect = false
     let playSound = SKAction.playSoundFileNamed("站起來2", waitForCompletion: false)
     let playＧameOverSound = SKAction.playSoundFileNamed("你眼睛瞎了嗎", waitForCompletion: false)
+    let playEasySound = SKAction.playSoundFileNamed("小牙籤", waitForCompletion: false)
+    let playHardSound = SKAction.playSoundFileNamed("困難2", waitForCompletion: false)
+    let playbeginSound = SKAction.playSoundFileNamed("Yes I Do", waitForCompletion: false)
     
     var score = Int(0)
     var scoreLbl = SKLabelNode()
@@ -53,45 +56,48 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 if easyBtn.parent == self && easyBtn.contains(location) {
                     gameMode = 1
                     restartScene()
+                    self.run(playEasySound)
                 }
                 else if hardBtn.parent == self && hardBtn.contains(location) {
                     gameMode = 2
                     restartScene()
+                    self.run(playHardSound)
                 } else {
                     if isGameStarted == false {
-                            isGameStarted = true
-                            virus.physicsBody?.affectedByGravity = true
-                            createPauseBtn()
-                            logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
-                                self.logoImg.removeFromParent()
-                            })
-                            taptoplayLbl.removeFromParent()
-                            settingBtn.removeFromParent()
-                            self.virus.run(repeatActionVirus)
-                            
-                            // Add pillars
-                            let spawn = SKAction.run({
-                                () in
-                                self.wallPair = self.createWalls()
-                                self.addChild(self.wallPair)
-                            })
-                            
-                            let delay = SKAction.wait(forDuration: 1.5)
-                            let SpawnDelay = SKAction.sequence([spawn,delay])
-                            let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
-                            self.run(spawnDelayForever)
-                            
-                            let distance = CGFloat(self.frame.width + wallPair.frame.width)
-                            let movePillars = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
-                            let addPoint = SKAction.run {
-                                self.score += 1
-                                self.scoreLbl.text = "\(self.score)"
-                            }
-                            let removePillars = SKAction.removeFromParent()
-                            moveAndRemove = SKAction.sequence([movePillars,addPoint,removePillars])
-                            
-                            virus.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
-                            virus.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
+                        isGameStarted = true
+                        self.run(playbeginSound)
+                        virus.physicsBody?.affectedByGravity = true
+                        createPauseBtn()
+                        logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
+                            self.logoImg.removeFromParent()
+                        })
+                        taptoplayLbl.removeFromParent()
+                        settingBtn.removeFromParent()
+                        self.virus.run(repeatActionVirus)
+                        
+                        // Add pillars
+                        let spawn = SKAction.run({
+                            () in
+                            self.wallPair = self.createWalls()
+                            self.addChild(self.wallPair)
+                        })
+                        
+                        let delay = SKAction.wait(forDuration: 1.5)
+                        let SpawnDelay = SKAction.sequence([spawn,delay])
+                        let spawnDelayForever = SKAction.repeatForever(SpawnDelay)
+                        self.run(spawnDelayForever)
+                        
+                        let distance = CGFloat(self.frame.width + wallPair.frame.width)
+                        let movePillars = SKAction.moveBy(x: -distance - 50, y: 0, duration: TimeInterval(0.008 * distance))
+                        let addPoint = SKAction.run {
+                            self.score += 1
+                            self.scoreLbl.text = "\(self.score)"
+                        }
+                        let removePillars = SKAction.removeFromParent()
+                        moveAndRemove = SKAction.sequence([movePillars,addPoint,removePillars])
+                        
+                        virus.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
+                        virus.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 40))
                         } else {
                             if isDied == false {
                                 virus.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
