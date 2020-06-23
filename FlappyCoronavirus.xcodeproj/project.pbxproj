@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6D13506724A1F14B00888DD3 /* 站起來2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D13506624A1F14B00888DD3 /* 站起來2.mp3 */; };
 		6DB533CA24A112C700681B9C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DB533C924A112C700681B9C /* Main.storyboard */; };
 		6DB533CC24A1161300681B9C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6DB533CB24A1161300681B9C /* Assets.xcassets */; };
 		C81E0A90249B19140020C13E /* player.atlas in Resources */ = {isa = PBXBuildFile; fileRef = C81E0A8F249B19140020C13E /* player.atlas */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6D13506624A1F14B00888DD3 /* 站起來2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "站起來2.mp3"; sourceTree = "<group>"; };
 		6DB533C924A112C700681B9C /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		6DB533CB24A1161300681B9C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C81E0A8F249B19140020C13E /* player.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = player.atlas; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				6DB533C924A112C700681B9C /* Main.storyboard */,
 				6DB533CB24A1161300681B9C /* Assets.xcassets */,
 				C888A76A2499E19600FA2A3D /* Info.plist */,
+				6D13506624A1F14B00888DD3 /* 站起來2.mp3 */,
 				C81E0A8F249B19140020C13E /* player.atlas */,
 			);
 			path = FlappyCoronavirus;
@@ -130,6 +133,7 @@
 			files = (
 				C81E0A90249B19140020C13E /* player.atlas in Resources */,
 				6DB533CC24A1161300681B9C /* Assets.xcassets in Resources */,
+				6D13506724A1F14B00888DD3 /* 站起來2.mp3 in Resources */,
 				6DB533CA24A112C700681B9C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

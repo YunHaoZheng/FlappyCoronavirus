@@ -14,6 +14,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isDied = Bool(false)
     var gameMode = 1
     
+    var repeatProtect = false
+    let playSound = SKAction.playSoundFileNamed("站起來2", waitForCompletion: false)
+    
     var score = Int(0)
     var scoreLbl = SKLabelNode()
     var highscoreLbl = SKLabelNode()
@@ -99,7 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             if restartBtn.contains(location) {
                                 if UserDefaults.standard.object(forKey: "highestScore") != nil {
                                     let hscore = UserDefaults.standard.integer(forKey: "highestScore")
-                                    if hscore < Int(scoreLbl.text!)! {
+                                    if hscore < score {
                                         UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
                                     }
                                 } else {
@@ -127,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody = contact.bodyA
         let secondBody = contact.bodyB
         
-        if firstBody.categoryBitMask == CollisionBitMask.virusCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.virusCategory || firstBody.categoryBitMask == CollisionBitMask.virusCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.virusCategory {
+        if firstBody.categoryBitMask == CollisionBitMask.virusCategory && secondBody.categoryBitMask == CollisionBitMask.pillarCategory || firstBody.categoryBitMask == CollisionBitMask.pillarCategory && secondBody.categoryBitMask == CollisionBitMask.virusCategory {
             enumerateChildNodes(withName: "wallPair", using: ({
                 (node, error) in
                 node.speed = 0
@@ -138,6 +141,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 createRestartBtn()
                 pauseBtn.removeFromParent()
                 self.virus.removeAllActions()
+            }
+        }
+        if firstBody.categoryBitMask == CollisionBitMask.virusCategory && secondBody.categoryBitMask == CollisionBitMask.groundCategory || firstBody.categoryBitMask == CollisionBitMask.groundCategory && secondBody.categoryBitMask == CollisionBitMask.virusCategory {
+            if isDied == false && repeatProtect == false {
+                let tmpText = SKAction.run {
+                    self.scoreLbl.text = "站起來"
+                    self.repeatProtect = true
+                }
+                let delay = SKAction.wait(forDuration: 0.25)
+                let recover = SKAction.run {
+                    self.score -= 1
+                    self.scoreLbl.text = "\(self.score)"
+                    self.repeatProtect = false
+                }
+                let standUp = SKAction.sequence([tmpText,playSound,delay,recover])
+                self.run(standUp)
             }
         }
     }
@@ -211,6 +230,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.removeAllActions()
         isDied = false
         isGameStarted = false
+        repeatProtect = false
         score = 0
         createScene()
     }
