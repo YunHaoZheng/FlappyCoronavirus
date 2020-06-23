@@ -16,6 +16,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var repeatProtect = false
     let playSound = SKAction.playSoundFileNamed("站起來2", waitForCompletion: false)
+    let playＧameOverSound = SKAction.playSoundFileNamed("你眼睛瞎了嗎", waitForCompletion: false)
     
     var score = Int(0)
     var scoreLbl = SKLabelNode()
@@ -103,7 +104,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                 if UserDefaults.standard.object(forKey: "highestScore") != nil {
                                     let hscore = UserDefaults.standard.integer(forKey: "highestScore")
                                     if hscore < score {
-                                        UserDefaults.standard.set(scoreLbl.text, forKey: "highestScore")
+                                        UserDefaults.standard.set(score, forKey: "highestScore")
                                     }
                                 } else {
                                     UserDefaults.standard.set(0, forKey: "highestScore")
@@ -136,6 +137,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 node.speed = 0
                 self.removeAllActions()
             }))
+            if repeatProtect == false {
+                let gameOverText = SKAction.run {
+                    self.scoreLbl.text = "你眼睛瞎了嗎"
+                }
+                let gameOver = SKAction.sequence([playＧameOverSound,gameOverText])
+                self.run(gameOver)
+                repeatProtect = true
+            }
             if isDied == false {
                 isDied = true
                 createRestartBtn()
@@ -155,7 +164,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.scoreLbl.text = "\(self.score)"
                     self.repeatProtect = false
                 }
-                let standUp = SKAction.sequence([tmpText,playSound,delay,recover])
+                let standUp = SKAction.sequence([playSound,tmpText,delay,recover])
                 self.run(standUp)
             }
         }
