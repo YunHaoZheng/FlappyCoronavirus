@@ -49,6 +49,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D39DE2C2624C21600912604 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				6D5ABA1824A23F2B00996D4E /* 困難2.mp3 */,
+				6D5ABA1A24A240B400996D4E /* Yes I Do.mp3 */,
+				6D13506624A1F14B00888DD3 /* 站起來2.mp3 */,
+				6DFCB8F024A22227002434CF /* 你眼睛瞎了嗎.mp3 */,
+				6D5ABA1624A23F1B00996D4E /* 小牙籤.mp3 */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		C888A74C2499E19600FA2A3D = {
 			isa = PBXGroup;
 			children = (
@@ -75,11 +87,7 @@
 				6DB533C924A112C700681B9C /* Main.storyboard */,
 				6DB533CB24A1161300681B9C /* Assets.xcassets */,
 				C888A76A2499E19600FA2A3D /* Info.plist */,
-				6D13506624A1F14B00888DD3 /* 站起來2.mp3 */,
-				6DFCB8F024A22227002434CF /* 你眼睛瞎了嗎.mp3 */,
-				6D5ABA1624A23F1B00996D4E /* 小牙籤.mp3 */,
-				6D5ABA1824A23F2B00996D4E /* 困難2.mp3 */,
-				6D5ABA1A24A240B400996D4E /* Yes I Do.mp3 */,
+				6D39DE2C2624C21600912604 /* Media */,
 				C81E0A8F249B19140020C13E /* player.atlas */,
 			);
 			path = FlappyCoronavirus;
