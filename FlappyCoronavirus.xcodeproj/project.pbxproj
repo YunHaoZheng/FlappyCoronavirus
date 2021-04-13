@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6D13506724A1F14B00888DD3 /* 站起來2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D13506624A1F14B00888DD3 /* 站起來2.mp3 */; };
+		6D3DDAD12625A16E00C411E3 /* 我現在要出征.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D3DDAD02625A16E00C411E3 /* 我現在要出征.mp3 */; };
 		6D5ABA1724A23F1B00996D4E /* 小牙籤.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D5ABA1624A23F1B00996D4E /* 小牙籤.mp3 */; };
 		6D5ABA1924A23F2C00996D4E /* 困難2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D5ABA1824A23F2B00996D4E /* 困難2.mp3 */; };
 		6D5ABA1B24A240B400996D4E /* Yes I Do.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6D5ABA1A24A240B400996D4E /* Yes I Do.mp3 */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		6D13506624A1F14B00888DD3 /* 站起來2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "站起來2.mp3"; sourceTree = "<group>"; };
+		6D3DDAD02625A16E00C411E3 /* 我現在要出征.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "我現在要出征.mp3"; sourceTree = "<group>"; };
 		6D5ABA1624A23F1B00996D4E /* 小牙籤.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "小牙籤.mp3"; sourceTree = "<group>"; };
 		6D5ABA1824A23F2B00996D4E /* 困難2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "困難2.mp3"; sourceTree = "<group>"; };
 		6D5ABA1A24A240B400996D4E /* Yes I Do.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Yes I Do.mp3"; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 		6D39DE2C2624C21600912604 /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				6D3DDAD02625A16E00C411E3 /* 我現在要出征.mp3 */,
 				6D5ABA1824A23F2B00996D4E /* 困難2.mp3 */,
 				6D5ABA1A24A240B400996D4E /* Yes I Do.mp3 */,
 				6D13506624A1F14B00888DD3 /* 站起來2.mp3 */,
@@ -152,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C81E0A90249B19140020C13E /* player.atlas in Resources */,
+				6D3DDAD12625A16E00C411E3 /* 我現在要出征.mp3 in Resources */,
 				6DB533CC24A1161300681B9C /* Assets.xcassets in Resources */,
 				6D5ABA1924A23F2C00996D4E /* 困難2.mp3 in Resources */,
 				6DFCB8F124A22227002434CF /* 你眼睛瞎了嗎.mp3 in Resources */,

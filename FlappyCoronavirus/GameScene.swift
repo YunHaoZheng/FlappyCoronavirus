@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var gameMode = 1
     
     var repeatProtect = false
+    var backgroundMusic: SKAudioNode!
     let playSound = SKAction.playSoundFileNamed("站起來2", waitForCompletion: false)
     let playＧameOverSound = SKAction.playSoundFileNamed("你眼睛瞎了嗎", waitForCompletion: false)
     let playEasySound = SKAction.playSoundFileNamed("小牙籤", waitForCompletion: false)
@@ -44,6 +45,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         createScene()
+        if let musicURL = Bundle.main.url(forResource: "我現在要出征", withExtension: "mp3") {
+            backgroundMusic = SKAudioNode(url: musicURL)
+            backgroundMusic.run(SKAction.changeVolume(to: Float(0.25), duration: 0))
+            backgroundMusic.run(SKAction.pause())
+            addChild(backgroundMusic)
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -65,7 +72,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } else {
                     if isGameStarted == false {
                         isGameStarted = true
-                        self.run(playbeginSound)
+                        let bgmDelay = SKAction.wait(forDuration: 0.75)
+                        let startMusic = SKAction.sequence([playbeginSound,bgmDelay,SKAction.play()])
+                        backgroundMusic.run(startMusic)
                         virus.physicsBody?.affectedByGravity = true
                         createPauseBtn()
                         logoImg.run(SKAction.scale(to: 0.5, duration: 0.3), completion: {
@@ -74,7 +83,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         taptoplayLbl.removeFromParent()
                         settingBtn.removeFromParent()
                         self.virus.run(repeatActionVirus)
-                        
                         // Add pillars
                         let spawn = SKAction.run({
                             () in
@@ -154,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             if isDied == false {
                 isDied = true
                 createRestartBtn()
+                backgroundMusic.run(SKAction.stop())
                 pauseBtn.removeFromParent()
                 self.virus.removeAllActions()
             }
@@ -248,5 +257,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         repeatProtect = false
         score = 0
         createScene()
+        backgroundMusic.run(SKAction.pause())
+        addChild(backgroundMusic)
     }
 }
