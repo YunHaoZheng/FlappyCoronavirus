@@ -177,7 +177,7 @@ extension GameScene {
         btmWall.physicsBody?.isDynamic = false
         btmWall.physicsBody?.affectedByGravity = false
         
-        topWall.zPosition = CGFloat(M_PI)
+        topWall.zPosition = CGFloat(Double.pi)
         
         wallPair.addChild(topWall)
         wallPair.addChild(btmWall)
@@ -192,7 +192,7 @@ extension GameScene {
         return wallPair
     }
     func random() -> CGFloat {
-        return CGFloat(Float(arc4random()) / 0xFFFFFFFF)
+        return CGFloat(Float(arc4random()) / Float(UINT32_MAX))
     }
     
     func random(min: CGFloat, max: CGFloat) -> CGFloat {
